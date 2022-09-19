@@ -5,12 +5,14 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("para1").style.display="none";
     document.getElementById("para2").style.display="none";
     document.getElementById("para3").style.display="none";
+    
     //programo el primer botón, oculto, enseño y calculo el factorial
     document.getElementById("btnEj1").addEventListener("click", function(){
        //mostro el primer paràgraf
         document.getElementById("para1").style.display="block";
         document.getElementById("para2").style.display="none";
         document.getElementById("para3").style.display="none";
+        document.getElementById("para4").style.display="none";
         //faig el factorial 
         let factorial=100;
         let acumula=1;
@@ -38,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("para2").style.display="block";
         document.getElementById("para1").style.display="none";
         document.getElementById("para3").style.display="none";
+        document.getElementById("para4").style.display="none";
     });
     document.getElementById("btnSuma").addEventListener("click", suma);
     //lo mismo con los otros botones de la calculadora
@@ -46,7 +49,17 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("para2").style.display="none";
         document.getElementById("para1").style.display="none";
         document.getElementById("para3").style.display="block";
+        document.getElementById("para4").style.display="none";
         document.getElementById("btnDni").addEventListener("click", validaDni);
+    });
+
+    //palindromo
+    document.getElementById("btnEj4").addEventListener("click", function(){
+        document.getElementById("para2").style.display="none";
+        document.getElementById("para1").style.display="none";
+        document.getElementById("para3").style.display="none";
+        document.getElementById("para4").style.display="block";
+        document.getElementById("btnFrase").addEventListener("click", validaPalindromo);
     });
    
 });
@@ -117,6 +130,37 @@ function validaDni(){
     
     }
     
+}
+
+function validaPalindromo(){
+    //Expresion regular para eliminar acentos
+    const removeAccents = (str) => {
+        return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    } 
+
+    let frase = removeAccents(document.getElementById("frase").value).toLowerCase();
+    console.log(frase);
+
+    frase = frase.replaceAll(" ","").replaceAll("\,","").replaceAll(".","");
+    console.log(frase);
+
+    let largo = frase.length-1;
+    let correcto = true;
+
+    for (let i = 0; i < largo; i++) {
+        
+        if (frase[i] == frase[largo]) {}
+        else{correcto = false}
+        largo--;
+        
+    }
+
+    if (correcto) {
+        document.getElementById("result").innerHTML="La frase es un palindromo";
+    }
+    else{
+        document.getElementById("result").innerHTML="La frase NO es un palindromo";
+    }
 }
 
 
