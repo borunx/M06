@@ -1,32 +1,18 @@
 document.addEventListener("DOMContentLoaded", function(){
     
-    document.getElementById("btnValidar").addEventListener("click",function(){
+    document.getElementById("btnValidar").addEventListener("click",()=>{
+        //recogida de valores
+        var nombre = document.getElementById("");
+        var apellidos = document.getElementById("");
+        var email = document.getElementById("");
+        var tuDni = document.getElementById("");
+        var tuNac = document.getElementById("");
 
-        valNombre();
-        valEmail();
+        //validar
+        if (!isNaN(nombre)) {
+                
+        }
 
     });
     
 })
-
-function valNombre(){
-    let nombre = document.getElementById("nombre").value;
-
-    if (isNaN(nombre)) {
-        console.log("Nombre OK!");
-    }
-    else{
-        console.log("Nombre incorrecto");
-    }
-}
-
-function valEmail(){
-    let email = document.getElementById("email").value;
-
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3,4})+$/.test(email)) {
-        console.log("El email " + email + " es correcto");        
-    }
-    else{
-        console.log("Email incorrecto");
-    }
-}
